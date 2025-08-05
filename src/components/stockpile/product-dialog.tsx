@@ -131,27 +131,27 @@ export function ProductDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[500px] glass-card border-white/20 rounded-2xl">
         <DialogHeader>
-          <DialogTitle>
+          <DialogTitle className="text-2xl font-bold gradient-text">
             {productToEdit ? "Edit Item" : "Add New Item"}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-gray-600">
             {productToEdit
               ? "Update the details of your grocery item."
               : "Fill in the details for the new grocery item."}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {imageUrl && (
-                 <div className="flex justify-center">
+                 <div className="flex justify-center mb-6">
                     <Image
                         src={imageUrl}
                         alt="Product image"
-                        width={100}
-                        height={100}
-                        className="rounded-md object-cover"
+                        width={120}
+                        height={120}
+                        className="rounded-2xl object-cover shadow-lg hover-lift"
                         data-ai-hint="product image"
                     />
                 </div>
@@ -161,15 +161,20 @@ export function ProductDialog({
               name="image"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Image</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-gray-700">Product Image</FormLabel>
                   <div className="flex items-center gap-2">
                     <FormControl>
-                      <Input placeholder="e.g. https://example.com/image.png" {...field} />
+                      <Input 
+                        placeholder="e.g. https://example.com/image.png" 
+                        className="rounded-xl bg-white/50 border-white/20"
+                        {...field} 
+                      />
                     </FormControl>
                      <Button
                       type="button"
                       variant="outline"
                       size="icon"
+                      className="rounded-xl border-white/20 bg-white/10 hover:bg-white/20"
                       onClick={() => fileInputRef.current?.click()}
                       aria-label="Upload Image"
                     >
@@ -192,9 +197,13 @@ export function ProductDialog({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Grocery Item Name</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-gray-700">Product Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Organic Apples" {...field} />
+                    <Input 
+                      placeholder="e.g. Organic Apples" 
+                      className="rounded-xl bg-white/50 border-white/20"
+                      {...field} 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -205,15 +214,20 @@ export function ProductDialog({
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-gray-700">Category</FormLabel>
                   <div className="flex items-center gap-2">
                     <FormControl>
-                      <Input placeholder="e.g. Produce" {...field} />
+                      <Input 
+                        placeholder="e.g. Produce" 
+                        className="rounded-xl bg-white/50 border-white/20"
+                        {...field} 
+                      />
                     </FormControl>
                     <Button
                       type="button"
                       variant="outline"
                       size="icon"
+                      className="rounded-xl border-white/20 bg-gradient-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20"
                       onClick={handleSuggestCategory}
                       disabled={isSuggesting}
                       aria-label="Suggest Category"
@@ -221,7 +235,7 @@ export function ProductDialog({
                       {isSuggesting ? (
                         <Loader2 className="h-4 w-4 animate-spin" />
                       ) : (
-                        <Sparkles className="h-4 w-4" />
+                        <Sparkles className="h-4 w-4 text-purple-600" />
                       )}
                     </Button>
                   </div>
@@ -229,51 +243,60 @@ export function ProductDialog({
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="quantity"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Quantity</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0"
-                      {...field}
-                      onChange={(e) => field.onChange(parseInt(e.target.value, 10) || 0)}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-             <FormField
-              control={form.control}
-              name="price"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Price ($)</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="0.00"
-                      {...field}
-                      onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            
+            <div className="grid grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="quantity"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-semibold text-gray-700">Quantity</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        placeholder="0"
+                        className="rounded-xl bg-white/50 border-white/20"
+                        {...field}
+                        onChange={(e) => field.onChange(parseInt(e.target.value, 10) || 0)}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="price"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-semibold text-gray-700">Price ($)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        placeholder="0.00"
+                        className="rounded-xl bg-white/50 border-white/20"
+                        {...field}
+                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            
             <DialogFooter>
               <Button
                 type="button"
                 variant="outline"
+                className="rounded-xl border-white/20 bg-white/10 hover:bg-white/20"
                 onClick={() => onOpenChange(false)}
               >
                 Cancel
               </Button>
-              <Button type="submit">Save Item</Button>
+              <Button type="submit" className="modern-button">
+                {productToEdit ? "Update Item" : "Save Item"}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

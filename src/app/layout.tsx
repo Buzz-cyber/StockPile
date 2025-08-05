@@ -13,11 +13,11 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import Link from 'next/link';
-import { LayoutDashboard, Package } from 'lucide-react';
+import { LayoutDashboard, Package, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Stockpile Manager',
-  description: 'A simple application to manage your inventory.',
+  title: 'Stockpile Pro',
+  description: 'Modern inventory management made simple.',
 };
 
 export default function RootLayout({
@@ -35,34 +35,39 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         <SidebarProvider>
-          <Sidebar>
-            <SidebarContent>
+          <Sidebar className="glass-card border-r-0">
+            <SidebarContent className="bg-transparent">
               <SidebarHeader>
-                <div className="flex items-center gap-2">
-                  <Package className="h-6 w-6 text-primary" />
-                  <h2 className="text-lg font-semibold">Stockpile</h2>
+                <div className="flex items-center gap-3 p-4">
+                  <div className="p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl">
+                    <Sparkles className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold gradient-text">Stockpile</h2>
+                    <p className="text-xs text-gray-500 font-medium">Pro</p>
+                  </div>
                 </div>
               </SidebarHeader>
-              <SidebarMenu>
+              <SidebarMenu className="px-4 space-y-2">
                 <SidebarMenuItem>
                   <Link href="/" passHref>
-                    <SidebarMenuButton tooltip="Dashboard">
-                      <LayoutDashboard />
-                      <span>Dashboard</span>
+                    <SidebarMenuButton tooltip="Dashboard" className="rounded-xl hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300">
+                      <LayoutDashboard className="h-5 w-5" />
+                      <span className="font-medium">Dashboard</span>
                     </SidebarMenuButton>
                   </Link>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <Link href="/products" passHref>
-                    <SidebarMenuButton tooltip="Products">
-                      <Package />
-                      <span>Products</span>
+                    <SidebarMenuButton tooltip="Products" className="rounded-xl hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300">
+                      <Package className="h-5 w-5" />
+                      <span className="font-medium">Products</span>
                     </SidebarMenuButton>
                   </Link>
                 </SidebarMenuItem>
@@ -70,10 +75,10 @@ export default function RootLayout({
             </SidebarContent>
           </Sidebar>
           <SidebarInset>
-            <header className="p-4 border-b md:hidden">
-              <SidebarTrigger />
+            <header className="p-6 border-b border-white/20 md:hidden backdrop-blur-sm">
+              <SidebarTrigger className="hover:bg-white/10 rounded-xl" />
             </header>
-            <main className="p-4">{children}</main>
+            <main className="p-8">{children}</main>
           </SidebarInset>
         </SidebarProvider>
         <Toaster />
