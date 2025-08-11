@@ -85,99 +85,94 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex-1 space-y-10">
-      <div className="mb-12 text-center">
-        <h1 className="text-6xl font-black gradient-text mb-4 tracking-tight">Grocery Dashboard</h1>
-        <p className="text-gray-600 text-xl font-medium">Fresh insights into your grocery inventory</p>
-        <div className="w-32 h-1 bg-gradient-to-r from-emerald-500 to-green-500 mx-auto mt-4 rounded-full"></div>
+    <div className="flex-1 space-y-8">
+      <div className="mb-8 text-center">
+        <h1 className="text-4xl font-bold gradient-text mb-2">Grocery Dashboard</h1>
+        <p className="text-gray-600 text-lg">Fresh insights into your grocery inventory</p>
       </div>
       
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="stats-card border-0">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-            <CardTitle className="text-sm font-bold text-gray-700 uppercase tracking-wide">Total Items</CardTitle>
-            <div className="relative p-3 bg-gradient-to-br from-emerald-500 to-green-500 rounded-2xl shadow-lg shadow-emerald-500/30">
-              <Package className="h-5 w-5 text-white drop-shadow-sm" />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-gray-700">Total Items</CardTitle>
+            <div className="p-2 bg-gradient-to-br from-emerald-500 to-green-500 rounded-lg">
+              <Package className="h-4 w-4 text-white" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-black text-gray-900 mb-2 tracking-tight">{totalProducts}</div>
-            <p className="text-sm text-gray-600 flex items-center gap-2 font-medium">
-              <TrendingUp className="h-4 w-4 text-emerald-500" />
+            <div className="text-3xl font-bold text-gray-900 mb-1">{totalProducts}</div>
+            <p className="text-sm text-gray-600 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3 text-emerald-500" />
               Unique grocery items
             </p>
           </CardContent>
         </Card>
         
         <Card className="stats-card border-0">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-            <CardTitle className="text-sm font-bold text-gray-700 uppercase tracking-wide">Total Quantity</CardTitle>
-            <div className="relative p-3 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl shadow-lg shadow-teal-500/30">
-              <Package2 className="h-5 w-5 text-white drop-shadow-sm" />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-gray-700">Total Quantity</CardTitle>
+            <div className="p-2 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-lg">
+              <Package2 className="h-4 w-4 text-white" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-black text-gray-900 mb-2 tracking-tight">{totalStock}</div>
-            <p className="text-sm text-gray-600 flex items-center gap-2 font-medium">
-              <TrendingUp className="h-4 w-4 text-emerald-500" />
+            <div className="text-3xl font-bold text-gray-900 mb-1">{totalStock}</div>
+            <p className="text-sm text-gray-600 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3 text-emerald-500" />
               Total units across all items
             </p>
           </CardContent>
         </Card>
         
         <Card className="stats-card border-0">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-            <CardTitle className="text-sm font-bold text-gray-700 uppercase tracking-wide">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-gray-700">
               Grocery Value
             </CardTitle>
-            <div className="relative p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-lg shadow-green-500/30">
-              <DollarSign className="h-5 w-5 text-white drop-shadow-sm" />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+            <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg">
+              <DollarSign className="h-4 w-4 text-white" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-black text-gray-900 mb-2 tracking-tight">
-              ${totalValue.toLocaleString()}
+            <div className="text-3xl font-bold text-gray-900 mb-1">
+              ₦{totalValue.toLocaleString()}
             </div>
-            <p className="text-sm text-gray-600 flex items-center gap-2 font-medium">
-              <TrendingUp className="h-4 w-4 text-emerald-500" />
+            <p className="text-sm text-gray-600 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3 text-emerald-500" />
               Total inventory value
             </p>
           </CardContent>
         </Card>
         
         <Card className="stats-card border-0">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-            <CardTitle className="text-sm font-bold text-gray-700 uppercase tracking-wide">Categories</CardTitle>
-            <div className="relative p-3 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl shadow-lg shadow-yellow-500/30">
-              <Star className="h-5 w-5 text-white drop-shadow-sm" />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-gray-700">Categories</CardTitle>
+            <div className="p-2 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg">
+              <Star className="h-4 w-4 text-white" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-black text-gray-900 mb-2 tracking-tight">{categoryDistribution.length}</div>
-            <p className="text-sm text-gray-600 flex items-center gap-2 font-medium">
-              <TrendingUp className="h-4 w-4 text-emerald-500" />
+            <div className="text-3xl font-bold text-gray-900 mb-1">{categoryDistribution.length}</div>
+            <p className="text-sm text-gray-600 flex items-center gap-1">
+              <TrendingUp className="h-3 w-3 text-emerald-500" />
               Product categories
             </p>
           </CardContent>
         </Card>
       </div>
       
-      <div className="grid gap-8">
-        <Card className="grocery-card border-0 col-span-1 lg:col-span-4">
+      <div className="grid gap-6">
+        <Card className="grocery-card border-0">
           <CardHeader>
-            <CardTitle className="text-3xl font-black gradient-text mb-2">Category Distribution</CardTitle>
-            <CardDescription className="text-gray-600 text-lg font-medium">
+            <CardTitle className="text-2xl font-bold gradient-text mb-1">Category Distribution</CardTitle>
+            <CardDescription className="text-gray-600">
               Visual breakdown of your grocery inventory by category
             </CardDescription>
           </CardHeader>
-          <CardContent className="pl-8 pr-8 pb-8">
+          <CardContent className="p-6">
             <ChartContainer
               config={chartConfig}
-              className="mx-auto aspect-square max-h-[600px]"
+              className="mx-auto aspect-square max-h-[400px]"
             >
               <PieChart>
                 <ChartTooltip
@@ -188,9 +183,9 @@ export default function DashboardPage() {
                   data={categoryDistribution}
                   dataKey="value"
                   nameKey="name"
-                  innerRadius={80}
-                  outerRadius={180}
-                  strokeWidth={3}
+                  innerRadius={60}
+                  outerRadius={140}
+                  strokeWidth={2}
                   stroke="#fff"
                 >
                   {categoryDistribution.map((entry, index) => (
@@ -202,7 +197,7 @@ export default function DashboardPage() {
                 </Pie>
                 <ChartLegend
                   content={<ChartLegendContent nameKey="name" />}
-                  className="-translate-y-[2rem] flex-wrap gap-6 [&>*]:basis-1/4 [&>*]:justify-center text-base font-bold"
+                  className="-translate-y-4 flex-wrap gap-4 [&>*]:basis-1/4 [&>*]:justify-center text-sm font-medium"
                 />
               </PieChart>
             </ChartContainer>

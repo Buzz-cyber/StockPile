@@ -131,27 +131,27 @@ export function ProductDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] grocery-card border-emerald-200/50 rounded-3xl shadow-2xl">
+      <DialogContent className="sm:max-w-[500px] grocery-card border-emerald-200/50 rounded-2xl">
         <DialogHeader>
-          <DialogTitle className="text-3xl font-black gradient-text mb-2">
+          <DialogTitle className="text-2xl font-bold gradient-text mb-1">
             {productToEdit ? "Edit Grocery Item" : "Add New Grocery Item"}
           </DialogTitle>
-          <DialogDescription className="text-gray-600 text-lg font-medium">
+          <DialogDescription className="text-gray-600">
             {productToEdit
               ? "Update your fresh grocery item details."
               : "Add a new item to your grocery inventory."}
           </DialogDescription>
         </DialogHeader>
         <Form {...form} >
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {imageUrl && (
-                 <div className="flex justify-center mb-8">
+                 <div className="flex justify-center mb-4">
                     <Image
                         src={imageUrl}
                         alt="Product image"
-                        width={150}
-                        height={150}
-                        className="rounded-3xl object-cover shadow-xl hover-lift border-4 border-emerald-100"
+                        width={120}
+                        height={120}
+                        className="rounded-2xl object-cover shadow-md border-2 border-emerald-100"
                         data-ai-hint="product image"
                     />
                 </div>
@@ -161,12 +161,12 @@ export function ProductDialog({
               name="image"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-base font-bold text-gray-800 uppercase tracking-wide">Product Image</FormLabel>
-                  <div className="flex items-center gap-3">
+                  <FormLabel className="text-sm font-semibold text-gray-800">Product Image</FormLabel>
+                  <div className="flex items-center gap-2">
                     <FormControl>
                       <Input 
                         placeholder="e.g. https://example.com/fresh-apple.png" 
-                        className="premium-input text-base font-medium"
+                        className="premium-input"
                         {...field} 
                       />
                     </FormControl>
@@ -174,11 +174,11 @@ export function ProductDialog({
                       type="button"
                       variant="outline"
                       size="icon"
-                      className="rounded-2xl border-emerald-200 bg-white/80 hover:bg-emerald-50 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300 h-12 w-12"
+                      className="rounded-lg border-emerald-200 bg-white hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-200 h-10 w-10"
                       onClick={() => fileInputRef.current?.click()}
                       aria-label="Upload Image"
                     >
-                      <Upload className="h-5 w-5 text-emerald-600" />
+                      <Upload className="h-4 w-4 text-emerald-600" />
                     </Button>
                     <input
                       type="file"
@@ -197,11 +197,11 @@ export function ProductDialog({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-base font-bold text-gray-800 uppercase tracking-wide">Product Name</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-gray-800">Product Name</FormLabel>
                   <FormControl>
                     <Input 
                       placeholder="e.g. Fresh Organic Apples" 
-                      className="premium-input text-base font-medium"
+                      className="premium-input"
                       {...field} 
                     />
                   </FormControl>
@@ -214,12 +214,12 @@ export function ProductDialog({
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-base font-bold text-gray-800 uppercase tracking-wide">Category</FormLabel>
-                  <div className="flex items-center gap-3">
+                  <FormLabel className="text-sm font-semibold text-gray-800">Category</FormLabel>
+                  <div className="flex items-center gap-2">
                     <FormControl>
                       <Input 
                         placeholder="e.g. Fresh Produce" 
-                        className="premium-input text-base font-medium"
+                        className="premium-input"
                         {...field} 
                       />
                     </FormControl>
@@ -227,15 +227,15 @@ export function ProductDialog({
                       type="button"
                       variant="outline"
                       size="icon"
-                      className="rounded-2xl border-emerald-200 bg-gradient-to-r from-emerald-500/10 to-green-500/10 hover:from-emerald-500/20 hover:to-green-500/20 shadow-lg hover:shadow-xl transition-all duration-300 h-12 w-12"
+                      className="rounded-lg border-emerald-200 bg-emerald-50 hover:bg-emerald-100 transition-all duration-200 h-10 w-10"
                       onClick={handleSuggestCategory}
                       disabled={isSuggesting}
                       aria-label="Suggest Category"
                     >
                       {isSuggesting ? (
-                        <Loader2 className="h-5 w-5 animate-spin text-emerald-600" />
+                        <Loader2 className="h-4 w-4 animate-spin text-emerald-600" />
                       ) : (
-                        <Sparkles className="h-5 w-5 text-emerald-600" />
+                        <Sparkles className="h-4 w-4 text-emerald-600" />
                       )}
                     </Button>
                   </div>
@@ -244,18 +244,18 @@ export function ProductDialog({
               )}
             />
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="quantity"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base font-bold text-gray-800 uppercase tracking-wide">Quantity</FormLabel>
+                    <FormLabel className="text-sm font-semibold text-gray-800">Quantity</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="0"
-                        className="premium-input text-base font-medium"
+                        className="premium-input"
                         {...field}
                         onChange={(e) => field.onChange(parseInt(e.target.value, 10) || 0)}
                       />
@@ -269,14 +269,14 @@ export function ProductDialog({
                 name="price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base font-bold text-gray-800 uppercase tracking-wide">Price ($)</FormLabel>
+                    <FormLabel className="text-sm font-semibold text-gray-800">Price (₦)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
-                        placeholder="0.00"
-                        className="premium-input text-base font-medium"
+                        placeholder="0"
+                        className="premium-input"
                         {...field}
-                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                        onChange={(e) => field.onChange(parseInt(e.target.value, 10) || 0)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -285,16 +285,16 @@ export function ProductDialog({
               />
             </div>
             
-            <DialogFooter className="gap-4 pt-4">
+            <DialogFooter className="gap-3 pt-4">
               <Button
                 type="button"
                 variant="outline"
-                className="rounded-2xl border-emerald-200 bg-white/80 hover:bg-emerald-50 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300 font-bold text-base py-3 px-6"
+                className="rounded-lg border-emerald-200 bg-white hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-200 font-medium"
                 onClick={() => onOpenChange(false)}
               >
                 Cancel
               </Button>
-              <Button type="submit" className="modern-button text-base">
+              <Button type="submit" className="modern-button">
                 {productToEdit ? "Update Grocery Item" : "Save Grocery Item"}
               </Button>
             </DialogFooter>

@@ -41,34 +41,33 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         <SidebarProvider>
-          <Sidebar className="glass-card border-r-0 floating-elements">
+          <Sidebar className="glass-card border-r-0">
             <SidebarContent className="bg-transparent">
               <SidebarHeader>
                 <div className="flex items-center gap-4 p-6">
-                  <div className="relative p-3 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-2xl shadow-xl shadow-emerald-500/30">
-                    <Sparkles className="h-7 w-7 text-white drop-shadow-lg" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+                  <div className="p-3 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 rounded-xl shadow-md">
+                    <Sparkles className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-black gradient-text tracking-tight">FreshStock</h2>
-                    <p className="text-sm text-emerald-600 font-bold tracking-wide">GROCERY PRO</p>
+                    <h2 className="text-xl font-bold gradient-text">FreshStock</h2>
+                    <p className="text-xs text-emerald-600 font-medium">GROCERY PRO</p>
                   </div>
                 </div>
               </SidebarHeader>
-              <SidebarMenu className="px-6 space-y-3">
+              <SidebarMenu className="px-6 space-y-2">
                 <SidebarMenuItem>
                   <Link href="/" passHref>
-                    <SidebarMenuButton tooltip="Dashboard" className="rounded-2xl py-4 px-4 hover:bg-gradient-to-r hover:from-emerald-100 hover:via-green-100 hover:to-teal-100 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group">
-                      <LayoutDashboard className="h-6 w-6 text-emerald-600 group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-bold text-gray-700 group-hover:text-emerald-700">Dashboard</span>
+                    <SidebarMenuButton tooltip="Dashboard" className="rounded-lg py-3 px-3 hover:bg-emerald-50 transition-all duration-200">
+                      <LayoutDashboard className="h-5 w-5 text-emerald-600" />
+                      <span className="font-medium text-gray-700">Dashboard</span>
                     </SidebarMenuButton>
                   </Link>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <Link href="/products" passHref>
-                    <SidebarMenuButton tooltip="Products" className="rounded-2xl py-4 px-4 hover:bg-gradient-to-r hover:from-emerald-100 hover:via-green-100 hover:to-teal-100 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group">
-                      <Package className="h-6 w-6 text-emerald-600 group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-bold text-gray-700 group-hover:text-emerald-700">Grocery Items</span>
+                    <SidebarMenuButton tooltip="Products" className="rounded-lg py-3 px-3 hover:bg-emerald-50 transition-all duration-200">
+                      <Package className="h-5 w-5 text-emerald-600" />
+                      <span className="font-medium text-gray-700">Grocery Items</span>
                     </SidebarMenuButton>
                   </Link>
                 </SidebarMenuItem>
@@ -76,10 +75,10 @@ export default function RootLayout({
             </SidebarContent>
           </Sidebar>
           <SidebarInset>
-            <header className="p-6 border-b border-emerald-200/30 md:hidden backdrop-blur-sm">
-              <SidebarTrigger className="hover:bg-emerald-100/50 rounded-2xl shadow-lg hover:shadow-emerald-500/20 transition-all duration-300" />
+            <header className="p-4 border-b border-emerald-200/30 md:hidden">
+              <SidebarTrigger className="hover:bg-emerald-100/50 rounded-lg transition-all duration-200" />
             </header>
-            <main className="p-8 floating-elements">{children}</main>
+            <main className="p-6">{children}</main>
           </SidebarInset>
         </SidebarProvider>
         <Toaster />

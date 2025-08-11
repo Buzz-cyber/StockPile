@@ -106,17 +106,16 @@ export function ProductTable({
 }: ProductTableProps) {
   if (products.length === 0) {
     return (
-      <div className="grocery-card rounded-3xl flex flex-col items-center justify-center p-20 text-center">
-        <div className="relative p-6 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full mb-6 shadow-xl shadow-emerald-500/20">
-          <Package className="h-12 w-12 text-emerald-600" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent rounded-full"></div>
+      <div className="grocery-card rounded-2xl flex flex-col items-center justify-center p-16 text-center">
+        <div className="p-4 bg-gradient-to-br from-emerald-100 to-green-100 rounded-full mb-4">
+          <Package className="h-8 w-8 text-emerald-600" />
         </div>
-        <h3 className="text-3xl font-black text-gray-900 mb-3 gradient-text">No Grocery Items Found</h3>
-        <p className="text-gray-600 mb-8 text-lg font-medium">
+        <h3 className="text-2xl font-bold text-gray-900 mb-2 gradient-text">No Grocery Items Found</h3>
+        <p className="text-gray-600 mb-6">
           Start building your fresh grocery inventory today.
         </p>
         <Button className="modern-button">
-          <Plus className="mr-3 h-5 w-5" />
+          <Plus className="mr-2 h-4 w-4" />
           Add Your First Item
         </Button>
       </div>
@@ -124,107 +123,107 @@ export function ProductTable({
   }
 
   return (
-    <div className="grocery-card rounded-3xl border-0 overflow-hidden shadow-2xl shadow-emerald-500/10">
+    <div className="grocery-card rounded-2xl border-0 overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow className="border-b border-emerald-100/50 hover:bg-transparent">
-            <TableHead className="w-[140px] font-black text-gray-800 text-sm uppercase tracking-wide py-6">Image</TableHead>
-            <TableHead className="w-[35%] font-black text-gray-800 text-sm uppercase tracking-wide">Item Name</TableHead>
-            <TableHead className="font-black text-gray-800 text-sm uppercase tracking-wide">Category</TableHead>
-            <TableHead className="text-right font-black text-gray-800 text-sm uppercase tracking-wide">Price</TableHead>
-            <TableHead className="text-right font-black text-gray-800 text-sm uppercase tracking-wide">Stock</TableHead>
-            <TableHead className="text-center font-black text-gray-800 text-sm uppercase tracking-wide">Status</TableHead>
-            <TableHead className="w-[120px] text-center font-black text-gray-800 text-sm uppercase tracking-wide">Actions</TableHead>
+            <TableHead className="w-[100px] font-semibold text-gray-800 text-sm py-4">Image</TableHead>
+            <TableHead className="w-[35%] font-semibold text-gray-800 text-sm">Item Name</TableHead>
+            <TableHead className="font-semibold text-gray-800 text-sm">Category</TableHead>
+            <TableHead className="text-right font-semibold text-gray-800 text-sm">Price (₦)</TableHead>
+            <TableHead className="text-right font-semibold text-gray-800 text-sm">Stock</TableHead>
+            <TableHead className="text-center font-semibold text-gray-800 text-sm">Status</TableHead>
+            <TableHead className="w-[100px] text-center font-semibold text-gray-800 text-sm">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {products.map((product) => (
             <TableRow key={product.id} className="border-b border-emerald-50/50 table-row-hover">
-              <TableCell className="py-6">
+              <TableCell className="py-4">
                 <Image
                   src={product.image || "https://placehold.co/100x100.png"}
                   alt={product.name}
-                  width={80}
-                  height={80}
-                  className="rounded-2xl object-cover shadow-lg hover-lift border-2 border-emerald-100"
+                  width={60}
+                  height={60}
+                  className="rounded-lg object-cover shadow-sm border border-emerald-100"
                   data-ai-hint="product image"
                 />
               </TableCell>
-              <TableCell className="py-6">
-                <div className="font-bold text-gray-900 text-xl tracking-tight">{product.name}</div>
+              <TableCell className="py-4">
+                <div className="font-semibold text-gray-900 text-lg">{product.name}</div>
               </TableCell>
-              <TableCell className="py-6">
-                <Badge variant="secondary" className="bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 border-emerald-200 rounded-full px-4 py-2 font-bold text-sm shadow-sm">
+              <TableCell className="py-4">
+                <Badge variant="secondary" className="bg-emerald-100 text-emerald-800 border-emerald-200 rounded-full px-3 py-1 font-medium text-sm">
                   {product.category}
                 </Badge>
               </TableCell>
-              <TableCell className="text-right font-black text-gray-900 py-6 text-lg">
-                ${(product.price || 0).toFixed(2)}
+              <TableCell className="text-right font-semibold text-gray-900 py-4">
+                ₦{(product.price || 0).toLocaleString()}
               </TableCell>
               <TableCell
                 className={cn(
-                  "text-right font-black text-xl py-6 transition-all duration-1000",
-                  recentlyUpdated === product.id && "text-emerald-600 bg-emerald-50 scale-110 shadow-lg rounded-lg"
+                  "text-right font-semibold text-lg py-4 transition-all duration-500",
+                  recentlyUpdated === product.id && "text-emerald-600 bg-emerald-50 rounded-lg"
                 )}
               >
                 {product.quantity}
               </TableCell>
-              <TableCell className="text-center py-6">
+              <TableCell className="text-center py-4">
                 <Badge 
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-bold border shadow-sm",
+                    "rounded-full px-3 py-1 text-sm font-medium border",
                     getStockStatus(product.quantity).color
                   )}
                 >
                   {getStockStatus(product.quantity).label}
                 </Badge>
               </TableCell>
-              <TableCell className="text-center py-6">
+              <TableCell className="text-center py-4">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-12 w-12 p-0 rounded-full hover:bg-emerald-100/50 hover:shadow-lg transition-all duration-300">
+                    <Button variant="ghost" className="h-8 w-8 p-0 rounded-lg hover:bg-emerald-100/50 transition-all duration-200">
                       <span className="sr-only">Open menu</span>
-                      <MoreHorizontal className="h-5 w-5 text-emerald-600" />
+                      <MoreHorizontal className="h-4 w-4 text-emerald-600" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="grocery-card border-emerald-200/50 rounded-2xl shadow-xl">
+                  <DropdownMenuContent align="end" className="grocery-card border-emerald-200/50 rounded-lg">
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="ghost" className="w-full justify-start font-bold h-12 px-4 rounded-xl hover:bg-emerald-50 text-emerald-700">
+                        <Button variant="ghost" className="w-full justify-start font-medium h-10 px-3 rounded-lg hover:bg-emerald-50 text-emerald-700">
                           Manage Stock
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-80 grocery-card border-emerald-200/50 rounded-2xl shadow-xl" align="end">
+                      <PopoverContent className="w-72 grocery-card border-emerald-200/50 rounded-lg" align="end">
                          <StockManager onUpdateStock={(change) => onUpdateStock(product.id, change)} />
                       </PopoverContent>
                     </Popover>
-                    <DropdownMenuItem onClick={() => onEdit(product)} className="rounded-xl hover:bg-emerald-50 font-bold text-emerald-700 py-3">
-                      <Pencil className="mr-3 h-4 w-4" />
+                    <DropdownMenuItem onClick={() => onEdit(product)} className="rounded-lg hover:bg-emerald-50 font-medium text-emerald-700 py-2">
+                      <Pencil className="mr-2 h-4 w-4" />
                       Edit
                     </DropdownMenuItem>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button
                           variant="ghost"
-                          className="w-full justify-start font-bold h-12 px-4 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-xl py-3"
+                          className="w-full justify-start font-medium h-10 px-3 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg py-2"
                         >
-                          <Trash2 className="mr-3 h-4 w-4" />
+                          <Trash2 className="mr-2 h-4 w-4" />
                           Delete
                         </Button>
                       </AlertDialogTrigger>
-                      <AlertDialogContent className="grocery-card border-emerald-200/50 rounded-3xl shadow-2xl">
+                      <AlertDialogContent className="grocery-card border-emerald-200/50 rounded-2xl">
                         <AlertDialogHeader>
-                          <AlertDialogTitle className="text-2xl font-black gradient-text">Are you sure?</AlertDialogTitle>
-                          <AlertDialogDescription className="text-gray-600 text-lg font-medium">
+                          <AlertDialogTitle className="text-xl font-bold gradient-text">Are you sure?</AlertDialogTitle>
+                          <AlertDialogDescription className="text-gray-600">
                             This action cannot be undone. This will permanently
                             delete the item "{product.name}".
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel className="rounded-2xl font-bold">Cancel</AlertDialogCancel>
+                          <AlertDialogCancel className="rounded-lg font-medium">Cancel</AlertDialogCancel>
                           <AlertDialogAction 
                             onClick={() => onDelete(product.id)}
-                            className="bg-red-600 hover:bg-red-700 rounded-2xl font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-all duration-200"
                           >
                             Delete
                           </AlertDialogAction>
