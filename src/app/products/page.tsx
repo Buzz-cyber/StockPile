@@ -63,48 +63,49 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <header className="space-y-6">
+    <div className="space-y-10">
+      <header className="space-y-8 text-center">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold gradient-text mb-2">
-              Products
+            <h1 className="text-6xl font-black gradient-text mb-4 tracking-tight">
+              Grocery Inventory
             </h1>
-            <p className="text-gray-600 text-lg">Manage your inventory with ease</p>
+            <p className="text-gray-600 text-xl font-medium">Manage your fresh groceries with style</p>
+            <div className="w-40 h-1 bg-gradient-to-r from-emerald-500 to-green-500 mx-auto mt-4 rounded-full"></div>
           </div>
           <Button 
             onClick={() => handleOpenDialog()} 
-            className="modern-button"
+            className="modern-button text-lg"
           >
-            <Plus className="mr-2 h-5 w-5" />
-            Add Product
+            <Plus className="mr-3 h-6 w-6" />
+            Add Grocery Item
           </Button>
         </div>
         
-        <div className="flex items-center gap-4 max-w-md">
+        <div className="flex items-center gap-6 max-w-lg mx-auto">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500 h-5 w-5" />
             <Input
-              placeholder="Search products..."
+              placeholder="Search grocery items..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white/50 backdrop-blur-sm border-white/20 rounded-xl"
+              className="pl-12 py-4 premium-input text-lg font-medium"
             />
           </div>
-          <Button variant="outline" className="rounded-xl border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20">
-            <Filter className="h-4 w-4" />
+          <Button variant="outline" className="rounded-2xl border-emerald-200 bg-white/80 backdrop-blur-sm hover:bg-emerald-50 hover:border-emerald-300 shadow-lg hover:shadow-xl transition-all duration-300 p-4">
+            <Filter className="h-5 w-5 text-emerald-600" />
           </Button>
         </div>
       </header>
       
       <main>
         {isLoading ? (
-          <div className="glass-card rounded-2xl p-8 space-y-4">
-            <Skeleton className="h-12 w-full rounded-xl" />
-            <Skeleton className="h-16 w-full rounded-xl" />
-            <Skeleton className="h-16 w-full rounded-xl" />
-            <Skeleton className="h-16 w-full rounded-xl" />
-            <Skeleton className="h-16 w-full rounded-xl" />
+          <div className="grocery-card rounded-3xl p-12 space-y-6">
+            <Skeleton className="h-16 w-full rounded-2xl" />
+            <Skeleton className="h-20 w-full rounded-2xl" />
+            <Skeleton className="h-20 w-full rounded-2xl" />
+            <Skeleton className="h-20 w-full rounded-2xl" />
+            <Skeleton className="h-20 w-full rounded-2xl" />
           </div>
         ) : (
           <ProductTable
